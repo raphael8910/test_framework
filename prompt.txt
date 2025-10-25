@@ -1,0 +1,26 @@
+Quand j'ai execute ce lien au navigateur : http://localhost:8080/test_framework-1.0-SNAPSHOT/zavatra.jsp
+Il y a eu cet erreur:
+akarta.servlet.ServletException: L'exécution de la servlet a lancé une exception
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	com.projet_framework.FrontServlet.handleRequest(FrontServlet.java:50)
+	com.projet_framework.FrontServlet.doGet(FrontServlet.java:18)
+	jakarta.servlet.http.HttpServlet.service(HttpServlet.java:619)
+	jakarta.servlet.http.HttpServlet.service(HttpServlet.java:716)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	com.projet_framework.FrontServlet.handleRequest(FrontServlet.java:50)
+	com.projet_framework.FrontServlet.doGet(FrontServlet.java:18)
+	jakarta.servlet.http.HttpServlet.service(HttpServlet.java:619)
+	jakarta.servlet.http.HttpServlet.service(HttpServlet.java:716)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	com.projet_framework.FrontServlet.handleRequest(FrontServlet.java:50)
+    ...
+
+    cause mère
+
+java.lang.StackOverflowError
+	jakarta.servlet.ServletRequestWrapper.isAsyncStarted(ServletRequestWrapper.java:379)
+	jakarta.servlet.ServletRequestWrapper.isAsyncStarted(ServletRequestWrapper.java:379)
+	jakarta.servlet.ServletRequestWrapper.isAsyncStarted(ServletRequestWrapper.java:379)
+	jakarta.servlet.ServletRequestWrapper.isAsyncStarted(ServletRequestWrapper.java:379)
+	jakarta.servlet.ServletRequestWrapper.isAsyncStarted(ServletRequestWrapper.java:379)
+	jakarta.servlet.ServletRequestWrapper.isAsyncStarted(ServletRequestWrapper.java:379)
