@@ -1,8 +1,8 @@
 package com.app_test;
 
-import com.projet_framework.annotation.Controller;
+import com.projet_framework.annotation.type.Controller;
 
-@Controller
+@Controller(url="/yu")
 public class Test1 {
     
 }

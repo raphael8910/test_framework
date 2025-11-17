@@ -4,7 +4,7 @@ import java.util.Set;
 
 import org.reflections.Reflections;
 
-import com.projet_framework.annotation.Controller;
+import com.projet_framework.annotation.type.Controller;
 
 public class Main {
     public static void main(String[] args) {
