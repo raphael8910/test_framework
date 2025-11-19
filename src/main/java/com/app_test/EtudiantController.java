@@ -15,6 +15,18 @@ public class EtudiantController {
     @Get(url = "/new")
     public ModelView newEtudiant(){
         ModelView view = new ModelView("form.jsp");
+        // view.ajouterObjet("nom", "Rakoto");
+        // view.ajouterObjet("age", 25);
+        // view.ajouterObjet("message", "Bienvenue!");
         return view ;
+    }
+
+    @Get(url = "/details")
+    public ModelView details(String nom, String prenom, int age) {
+        ModelView view = new ModelView("details.jsp");
+        view.ajouterObjet("nom", nom);
+        view.ajouterObjet("prenom", prenom);
+        view.ajouterObjet("age", age);
+        return view;
     }
 }

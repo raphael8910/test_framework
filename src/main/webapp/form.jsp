@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire d'insertion d'etudiants</title>
+    <title>Formulaire Etudiant</title>
 </head>
 <body>
-    <h1>Formulaire de creation de d'etudiants</h1>
-    
+    <h1>Inscription Etudiant</h1>
+    <form action="${pageContext.request.contextPath}/etudiants/details" method="get">
+        <label>Nom: <input type="text" name="nom" /></label><br/>
+        <label>Prenom: <input type="text" name="prenom" /></label><br/>
+        <label>Age: <input type="number" name="age" /></label><br/>
+        <button type="submit">Envoyer</button>
+    </form>
 </body>
 </html>
