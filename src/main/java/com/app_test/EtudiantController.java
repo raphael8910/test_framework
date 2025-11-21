@@ -1,6 +1,7 @@
 package com.app_test;
 
 import com.projet_framework.annotation.method.Get;
+import com.projet_framework.annotation.parameter.RequestParam;
 import com.projet_framework.annotation.type.Controller;
 import com.projet_framework.utility.ModelView;
 
@@ -22,9 +23,9 @@ public class EtudiantController {
     }
 
     @Get(url = "/details")
-    public ModelView details(String nom, String prenom, int age) {
+    public ModelView details(@RequestParam(paramName="nom") String nomEtudiant, String prenom, int age) {
         ModelView view = new ModelView("details.jsp");
-        view.ajouterObjet("nom", nom);
+        view.ajouterObjet("nom", nomEtudiant);
         view.ajouterObjet("prenom", prenom);
         view.ajouterObjet("age", age);
         return view;
