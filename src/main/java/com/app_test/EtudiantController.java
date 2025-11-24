@@ -1,6 +1,7 @@
 package com.app_test;
 
 import com.projet_framework.annotation.method.Get;
+import com.projet_framework.annotation.parameter.PathVariable;
 import com.projet_framework.annotation.parameter.RequestParam;
 import com.projet_framework.annotation.type.Controller;
 import com.projet_framework.utility.ModelView;
@@ -13,6 +14,15 @@ public class EtudiantController {
         return "Voici tous les etudiants";
     }
 
+    @Get(url = "/{id}")
+    public ModelView getById(@PathVariable(name = "id") int id){
+        ModelView modelView = new ModelView("detail-etudiant.jsp");
+        modelView.ajouterObjet("id", id);
+        modelView.ajouterObjet("message", "Voici les details concernant l'etudiant id: "+id);
+
+        return modelView;
+    }
+    
     @Get(url = "/new")
     public ModelView newEtudiant(){
         ModelView view = new ModelView("form.jsp");
