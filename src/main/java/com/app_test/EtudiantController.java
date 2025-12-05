@@ -1,6 +1,9 @@
 package com.app_test;
 
-import com.projet_framework.annotation.method.Get;
+import java.util.Map;
+
+import com.projet_framework.annotation.method.GetUrl;
+import com.projet_framework.annotation.method.PostUrl;
 import com.projet_framework.annotation.parameter.PathVariable;
 import com.projet_framework.annotation.parameter.RequestParam;
 import com.projet_framework.annotation.type.Controller;
@@ -9,12 +12,12 @@ import com.projet_framework.utility.ModelView;
 @Controller(url="/etudiants")
 public class EtudiantController {
     
-    @Get(url = "/")
+    @GetUrl(url = "/")
     public String getAll(){
         return "Voici tous les etudiants";
     }
 
-    @Get(url = "/{id}")
+    @GetUrl(url = "/{id}")
     public ModelView getById(@PathVariable(name = "id") int id){
         ModelView modelView = new ModelView("detail-etudiant.jsp");
         modelView.ajouterObjet("id", id);
@@ -22,8 +25,8 @@ public class EtudiantController {
 
         return modelView;
     }
-    
-    @Get(url = "/new")
+
+    @GetUrl(url = "/new")
     public ModelView newEtudiant(){
         ModelView view = new ModelView("form.jsp");
         // view.ajouterObjet("nom", "Rakoto");
@@ -32,7 +35,16 @@ public class EtudiantController {
         return view ;
     }
 
-    @Get(url = "/details")
+    @GetUrl(url = "/detailsMap")
+    public ModelView detailsMap(Map<String, Object> detailsMap){
+        ModelView view = new ModelView("details.jsp");   
+        for (String key : detailsMap.keySet()){
+            view.ajouterObjet(key, detailsMap.get(key));
+        }
+        return view;
+    }
+
+    @GetUrl(url = "/details")
     public ModelView details(@RequestParam(paramName="nom") String nomEtudiant, String prenom, int age) {
         ModelView view = new ModelView("details.jsp");
         view.ajouterObjet("nom", nomEtudiant);
@@ -40,4 +52,14 @@ public class EtudiantController {
         view.ajouterObjet("age", age);
         return view;
     }
+
+    @PostUrl(url = "/details")
+    public ModelView detailsPost(@RequestParam(paramName="nom") String nomEtudiant, String prenom, int age) {
+        ModelView view = new ModelView("details.jsp");
+        view.ajouterObjet("nom", nomEtudiant);
+        view.ajouterObjet("prenom", prenom);
+        view.ajouterObjet("age", age);
+        return view;
+    }
+
 }
