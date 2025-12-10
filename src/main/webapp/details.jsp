@@ -7,10 +7,12 @@
 <body>
 <%
     // String nom = (String )request.getAttribute("nom");
+    
     String nom = ParameterConverter.getAttributeWithType(request,"nom",String.class);
     String prenom = ParameterConverter.getAttributeWithType(request,"prenom",String.class);
     int age = ParameterConverter.getAttributeWithType(request, "age", Integer.class);
     double poids = ParameterConverter.getDoubleAttribute(request, "poids");
+
     // String prenom = (String )request.getAttribute("prenom");
                         
     // int age = Integer.parseInt((String)request.getAttribute("age"));
@@ -21,5 +23,6 @@
     <p>Prenom: <%=prenom %></p>
     <p>Age: <%= age%> </p>
     <p>Poids: ${poids}</p>
+    
 </body>
 </html>
