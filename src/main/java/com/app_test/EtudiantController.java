@@ -1,8 +1,12 @@
 package com.app_test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import com.projet_framework.annotation.method.Get;
 import com.projet_framework.annotation.method.GetUrl;
+import com.projet_framework.annotation.method.JSON;
 import com.projet_framework.annotation.method.PostUrl;
 import com.projet_framework.annotation.parameter.EntityBody;
 import com.projet_framework.annotation.parameter.PathVariable;
@@ -13,10 +17,40 @@ import com.projet_framework.utility.ModelView;
 @Controller(url = "/etudiants")
 public class EtudiantController {
 
-    @GetUrl(url = "/")
-    public String getAll() {
+    @GetUrl(url = "")
+    public String getAll(){
         return "Voici tous les etudiants";
     }
+
+    @GetUrl(url = "/list")
+    @JSON
+    public List<Etudiant> getEtudiants() {
+        List<Etudiant> liste = new ArrayList<>();
+
+        Etudiant e1 = new Etudiant();
+        e1.setNom("Rakoto");
+        e1.setPrenom("Jean");
+        e1.setAge(20);
+
+        Etudiant e2 = new Etudiant();
+        e2.setNom("Rabe");
+        e2.setPrenom("Marie");
+        e2.setAge(22);
+
+        liste.add(e1);
+        liste.add(e2);
+
+        return liste;
+    }
+
+    
+    @GetUrl(url = "/save_etudiant")
+    public ModelView saveEtudiant(@EntityBody Etudiant etudiant) {
+        ModelView view = new ModelView("etudiant-result.jsp");
+        view.ajouterObjet("etudiant", etudiant);
+        return view;
+    }
+
 
     @GetUrl(url = "/{id}")
     public ModelView getById(@PathVariable(name = "id") int id) {
@@ -33,12 +67,12 @@ public class EtudiantController {
         return view;
     }
 
-    @GetUrl(url = "/save_etudiant")
-    public ModelView saveEtudiant(@EntityBody Etudiant etudiant) {
-        ModelView view = new ModelView("etudiant-result.jsp");
-        view.ajouterObjet("etudiant", etudiant);
+    @GetUrl(url = "/newMap")
+    public ModelView newMapEtudiant() {
+        ModelView view = new ModelView("form2.jsp");
         return view;
     }
+
 
     @GetUrl(url = "/detailsMap")
     public ModelView detailsMap(Map<String, Object> detailsMap) {
